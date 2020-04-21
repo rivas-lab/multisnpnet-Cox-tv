@@ -1,0 +1,24 @@
+Package: coxtv
+Title: Regularized Cox proportional hazard model with time-varying covariate
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Ruilin",
+           family = "Li",
+           role = c("aut", "cre"),
+           email = "ruilinli@stanford.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package provides function to fit a L1 regularized Cox proportional hazard model,
+             with time-varying covariate. It also provides function to plot Kaplan-Meier curve
+             for time-varying covariate.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    Rcpp
+RoxygenNote: 7.1.0
+LinkingTo: 
+    Rcpp
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
