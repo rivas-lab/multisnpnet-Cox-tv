@@ -14,7 +14,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    Rcpp
+    Rcpp, ggplot2, dplyr
 RoxygenNote: 7.1.0
 LinkingTo: 
     Rcpp
