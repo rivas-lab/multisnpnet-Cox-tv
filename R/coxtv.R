@@ -75,6 +75,43 @@ cindex_tv = function(phe, tv_list, ti_vars, B)
 }
 
 
+#' Draw a Kaplan Meier curve based on a time-varying covariate
+#' @param tv The time varying covariate. Must satisfy the same condition on the
+#'           elements of tv_list above
+#' @return The KM-curve
+#' @export
+KM_curve_tv = function(phe, tv, ngroup=2)
+{
+  info = get_info(phe, list(tv))
+  if(all(tv$value %in% c(0, 1))){
+    bound = c(-1, 0.5, 2)
+    ngroup = 2
+  } else{
+    q = seq(0, 1, length.out = ngroup+1)
+    q = q[-c(1, length(q))]
+    bound = c(-Inf, quantile(tv$value, q), Inf)
+  }
+  result = matrix(nrow=(1+length(info$erank)), ncol=ngroup)
+  result[1,] = 1
+  for(i in 1:length(info$erank)){
+    start = info$Vind[i]+1
+    end = info$Vind[i+1] # start and end of risk set
+
+    values = info$V[start:end, 1]
+    event_values = values[1:(info$te_count[i])]
+    denoms = sapply(1:ngroup, function(j){sum( (values > bound[j]) & (values <= bound[j+1]))})
+    numerators =sapply(1:ngroup, function(j){sum( (event_values > bound[j]) & (event_values <= bound[j+1]))})
+    result[(i+1),] = result[i,] *(1 - (numerators/denoms))
+  }
+  result = data.frame(t=c(0, info$event_time), result)
+  colnames(result) = c("t", paste("group", 1:ngroup, sep=""))
+  result = data.frame(result[1], stack(result[2:(ngroup+1)]))
+  g = ggplot2::ggplot() + ggplot2::geom_step(data=result, mapping=ggplot2::aes(x=t, y=values, color=ind), size=1) +
+    ggplot2::xlab("Time") + ggplot2::ylab("Survival probability")+ ggplot2::theme(legend.position="top")
+
+  return(g)
+}
+
 
 get_info = function(phe, tv_list){
   ## Get Vind first
@@ -135,5 +172,6 @@ get_info = function(phe, tv_list){
   info$eind = eind
   info$te_count = te_count
   info$eranke = match(erank_wt, event_rank) - 1L
+  info$event_time = event_time
   return(info)
 }

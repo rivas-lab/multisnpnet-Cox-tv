@@ -69,5 +69,8 @@ cindex_tv(jasa, tv_list,c('surgery', 'year', 'age'), result[[1]])
 cindex_tv(jasa, tv_list,c('surgery', 'year', 'age'), result[[2]])
 ```
 
-
+We can also draw a Kaplan-Meier curve based on a time varying covariate. We use the definition defined in section four of [this paper](https://www.jstor.org/stable/pdf/27643698.pdf?refreqid=excelsior%3A9a359cba87b05649fc535fe7fea9430e).
+```{r}
+KM_curve_tv(jasa, tv_list[[1]], ngroup=2)
+```
 

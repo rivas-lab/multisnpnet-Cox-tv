@@ -258,7 +258,6 @@ Rcpp::List fit(Rcpp::NumericMatrix X,
                     &erank(0),
                     &eind(0),
                     &te_count(0));
-    std::cout  << "got  here  \n";
 
     VectorXd B(Bmap);
     VectorXd prev_B(B);
