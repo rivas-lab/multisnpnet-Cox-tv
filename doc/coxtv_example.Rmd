@@ -1,6 +1,6 @@
 ---
 title: "coxtv example"
-output: rmarkdown::github_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{coxtv_example}
   %\VignetteEngine{knitr::rmarkdown}
