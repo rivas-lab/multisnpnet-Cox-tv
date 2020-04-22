@@ -2,6 +2,6 @@
 inst/doc
 Meta
 doc
-.LICENSE
-.Rproj
+LICENSE
+*Rproj
 .Rhistory
