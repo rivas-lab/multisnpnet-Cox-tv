@@ -157,11 +157,12 @@ get_info = function(phe, tv_list){
     tv = tv[tv_o,]
 
     tmp = unique(tv$ID)
-    tmp = match(tmp, tv$ID) - 1L
+    tmp = match(tmp, tv$ID)
     if(!all(tv$time[tmp] < min(event_time)))
     {
       stop("Each person must have at least one measurement before the first event")
     }
+    tmp =  tmp - 1L
     cumu_measurement = c(tmp, nrow(tv))
     v = numeric(vind[length(vind)])
     get_V(v, tv$value, tv$time, event_time, cumu_measurement, event_rank, vind)
