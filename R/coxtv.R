@@ -150,6 +150,7 @@ get_info = function(phe, tv_list){
       stop("Some people does not have any time varying covariate measured.")
     }
     #tv$time = tv$age - phe$t0[match(tv$ID, phe$ID)] # time when the measurements are taken, relative to MI
+    tv = dplyr::filter(tv, ID %in% phe$ID)
     tv$etime = phe$y[match(tv$ID, phe$ID)] # need this for the ordering
     tv$status = phe$status[match(tv$ID, phe$ID)] # need this for the ordering too
     tv_o = order(tv$etime, -tv$status, tv$ID, tv$time) #lexicalgraphic ordering (event time, event, ID, measuremen time)
@@ -157,6 +158,10 @@ get_info = function(phe, tv_list){
 
     tmp = unique(tv$ID)
     tmp = match(tmp, tv$ID) - 1L
+    if(!all(tv$time[tmp] < min(event_time)))
+    {
+      stop("Each person must have at least one measurement before the first event")
+    }
     cumu_measurement = c(tmp, nrow(tv))
     v = numeric(vind[length(vind)])
     get_V(v, tv$value, tv$time, event_time, cumu_measurement, event_rank, vind)
