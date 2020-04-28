@@ -1,6 +1,5 @@
 See DESCRIPTION and [vignettes](vignettes/) to use this package.
 
-Make sure [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page) is available in the directory /usr/local/include/eigen
 
 There are a few ways to represent time-varying covariates. In this
 example I will use the Stanford Heart Transplant data to demonstrate how
