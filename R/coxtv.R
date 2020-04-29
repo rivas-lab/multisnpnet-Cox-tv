@@ -160,7 +160,9 @@ get_info = function(phe, tv_list){
     tmp = match(tmp, tv$ID)
     if(!all(tv$time[tmp] < min(event_time)))
     {
-      warning(paste("Some people do not have time-varying covariates measured before",
+      num_violation = sum((tv$time[tmp] >= min(event_time)))
+      warning(paste(num_violation,
+                    "people do not have time-varying covariates measured before",
                     "the first event.",
                     "The most recent measurement after the event is used."))
     }
