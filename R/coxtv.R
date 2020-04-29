@@ -20,9 +20,12 @@
 #' @param p.fac penalty factor for each variable, uniform if not provided
 #' @return The lasso solution
 #' @export
-coxtv = function(phe, tv_list, ti_vars, lambda, B0=NULL, p.fac=NULL)
+coxtv = function(phe, tv_list, ti_vars, lambda, B0=NULL, p.fac=NULL, info=NULL)
 {
-  info = get_info(phe, tv_list)
+  if(is.null(info))
+  {
+    info = get_info(phe, tv_list)
+  }
   X = as.matrix(dplyr::select(phe, ti_vars))
   if(any(is.na(X))){
     stop("NA in predictors detected.")
@@ -62,9 +65,12 @@ coxtv = function(phe, tv_list, ti_vars, lambda, B0=NULL, p.fac=NULL)
 #' @param B The fitted paraneter, all the other variables are the same as above
 #' @return The C-index
 #' @export
-cindex_tv = function(phe, tv_list, ti_vars, B)
+cindex_tv = function(phe, tv_list, ti_vars, B, info=NULL)
 {
-  info = get_info(phe, tv_list)
+  if(is.null(info))
+  {
+    info = get_info(phe, tv_list)
+  }
   X = as.matrix(dplyr::select(phe, ti_vars))
   if(any(is.na(X))){
     stop("NA in predictors detected.")
@@ -116,7 +122,7 @@ KM_curve_tv = function(phe, tv, ngroup=2)
   return(g)
 }
 
-
+#' @export
 get_info = function(phe, tv_list){
   ## Get Vind first
   o = order(phe$y, -phe$status, phe$ID) # Use lexicographic order(event time, event, ID)
