@@ -197,3 +197,17 @@ get_info = function(phe, tv_list){
   }
   return(info)
 }
+
+#' @export
+cox_residual = function(phe, ti_vars, info, beta)
+{
+  X = as.matrix(dplyr::select(phe, ti_vars))
+  get_residual(X,
+               info$V,
+               info$Vind,
+               info$order-1L,
+               info$erank,
+               info$eind,
+               info$te_count,
+               beta)
+}

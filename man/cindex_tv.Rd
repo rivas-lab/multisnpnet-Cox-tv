@@ -7,7 +7,7 @@
 cindex_tv(phe, tv_list, ti_vars, B, info = NULL)
 }
 \arguments{
-\item{B}{The fitted paraneter, all the other variables are the same as above}
+\item{B}{The fitted parameter, all the other variables are the same as above}
 }
 \value{
 The C-index

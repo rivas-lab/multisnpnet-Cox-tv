@@ -2,6 +2,7 @@
 
 export(KM_curve_tv)
 export(cindex_tv)
+export(cox_residual)
 export(coxtv)
 export(get_info)
 importFrom(Rcpp,sourceCpp)
