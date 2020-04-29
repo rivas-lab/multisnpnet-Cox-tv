@@ -59,7 +59,7 @@ coxtv = function(phe, tv_list, ti_vars, lambda, B0=NULL, p.fac=NULL, info=NULL)
 }
 
 #' Compute the concordance index of the fit
-#' @param B The fitted paraneter, all the other variables are the same as above
+#' @param B The fitted parameter, all the other variables are the same as above
 #' @return The C-index
 #' @export
 cindex_tv = function(phe, tv_list, ti_vars, B, info=NULL)
