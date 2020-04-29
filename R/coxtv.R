@@ -160,7 +160,9 @@ get_info = function(phe, tv_list){
     tmp = match(tmp, tv$ID)
     if(!all(tv$time[tmp] < min(event_time)))
     {
-      stop("Each person must have at least one measurement before the first event")
+      warning(paste("Some people do not have time-varying covariates measured before",
+                    "the first event.",
+                    "The most recent measurement after the event is used."))
     }
     tmp =  tmp - 1L
     cumu_measurement = c(tmp, nrow(tv))
