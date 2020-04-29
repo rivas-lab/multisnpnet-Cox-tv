@@ -4,7 +4,7 @@
 \alias{cindex_tv}
 \title{Compute the concordance index of the fit}
 \usage{
-cindex_tv(phe, tv_list, ti_vars, B)
+cindex_tv(phe, tv_list, ti_vars, B, info = NULL)
 }
 \arguments{
 \item{B}{The fitted paraneter, all the other variables are the same as above}

@@ -4,7 +4,7 @@
 \alias{coxtv}
 \title{Fit a proportional hazard model with time-dependent covariates}
 \usage{
-coxtv(phe, tv_list, ti_vars, lambda, B0 = NULL, p.fac = NULL)
+coxtv(phe, tv_list, ti_vars, lambda, B0 = NULL, p.fac = NULL, info = NULL)
 }
 \arguments{
 \item{phe}{a data frame or data table with the following columns:
