@@ -54,11 +54,8 @@ coxtv = function(phe, tv_list, ti_vars, lambda, B0=NULL, p.fac=NULL, info=NULL)
                2000,
                1.1,
                1e-5)
-  if(is.null(names(tv_list)))
-  {
-    names(tv_list) = paste0("TV", 1:length(tv_list))
-  }
-  return(lapply(result, function(x){names(x)= c(names(tv_list), ti_vars);x}))
+
+  return(lapply(result, function(x){names(x)= c(info$names, ti_vars);x}))
 }
 
 #' Compute the concordance index of the fit
@@ -193,5 +190,10 @@ get_info = function(phe, tv_list){
   info$te_count = te_count
   info$eranke = match(erank_wt, event_rank) - 1L
   info$event_time = event_time
+  info$names = names(tv_list)
+  if(is.null(info$names))
+  {
+    info$names = paste0("TV", 1:length(tv_list))
+  }
   return(info)
 }
