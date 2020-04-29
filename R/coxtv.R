@@ -51,6 +51,10 @@ coxtv = function(phe, tv_list, ti_vars, lambda, B0=NULL, p.fac=NULL)
                2000,
                1.1,
                1e-5)
+  if(is.null(names(tv_list)))
+  {
+    names(tv_list) = paste0("TV", 1:length(tv_list))
+  }
   return(lapply(result, function(x){names(x)= c(names(tv_list), ti_vars);x}))
 }
 
