@@ -303,6 +303,11 @@ Rcpp::List fit(Rcpp::NumericMatrix X,
                     break;
                 }
                 step_size /= linesearch_beta;
+                std::cout << step_size << std::endl;
+                if(step_size < 1e-5){
+                    return result;
+                }
+
             }
 
             if((prev_B - B).lpNorm<Eigen::Infinity>() < eps){
