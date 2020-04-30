@@ -303,8 +303,9 @@ Rcpp::List fit(Rcpp::NumericMatrix X,
                     break;
                 }
                 step_size /= linesearch_beta;
-                std::cout << step_size << std::endl;
+
                 if(step_size < 1e-5){
+                    std::cout << "Step size become too small, please restart. \n";
                     return result;
                 }
 

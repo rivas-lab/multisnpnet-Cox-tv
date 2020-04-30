@@ -35,6 +35,14 @@ coxtv = function(phe, tv_list, ti_vars, lambda, B0=NULL, p.fac=NULL, info=NULL)
 
   if(is.null(B0)){
     B0 = numeric(pti+ptv)
+  } else {
+    if(any(is.na(B0))){
+      stop("B0 can not contain NA")
+    }
+
+    if(length(B0) != (pti + ptv)){
+      stop("The length of B0 does not match the number of predictors")
+    }
   }
 
   if(is.null(p.fac)){
