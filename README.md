@@ -1,4 +1,4 @@
-# Regularized Cox proportional hazard model with time-varying covariate
+# Regularized Cox proportional hazard model with time-varying covariate (Coxtv)
 By Ruilin Li
 
 This package provide functions that solve the Regularized Cox proportional hazard model with time-varying covariate
