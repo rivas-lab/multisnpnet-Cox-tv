@@ -1,3 +1,5 @@
+# Regularized Cox proportional hazard model with time-varying covariate
+This package provide functions that solve the Regularized Cox proportional hazard model with time-varying covariate
 See DESCRIPTION and [vignettes](vignettes/) to use this package.
 
 
